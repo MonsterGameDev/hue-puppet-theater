@@ -9,6 +9,10 @@ import { LightComponent } from './components/light/light.component';
 import { LightsComponent } from './components/lights/lights.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OverviewComponent } from './overview/overview.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,10 @@ import { OverviewComponent } from './overview/overview.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
