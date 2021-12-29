@@ -1,5 +1,12 @@
 .group-container {
   border: 1px solid black;
   border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
 
+.groups-counter {
+  display: flex;
+  justify-content: end;
+  margin: 0.3rem 1rem;
 }
