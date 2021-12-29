@@ -10,16 +10,20 @@ import { AppState, Group, Light } from 'src/app/+state/state.interfaces';
 })
 export class GroupComponent implements OnInit {
   @Input() group?: Group;
-  lightIds?: number[];
+  lightIds?: string[];
   lights?: Light[];
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.lightIds = this.group?.lights;
+    console.log('lightIds: ', this.lightIds);
 
-    this.store.select(selectAllLights).subscribe(
-      (lights:Light[]) => this.lights = lights.filter((light: Light) => this.lightIds?.includes(light.id))
-    );
+    this.store.select(selectAllLights).subscribe((lights: Light[]) => {
+      this.lights = lights.filter((light: Light) => {
+        return this.lightIds?.includes(light.id);
+      });
+      console.log('Lights. ', this.lights);
+    });
   }
 }

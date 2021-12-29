@@ -19,7 +19,7 @@ export class GroupEffects {
             let groups: Group[] = [];
             Object.keys(response).forEach((key) => {
               groups?.push({
-                id: parseInt(key, 10),
+                id: key,
                 ...response[key],
               });
             });

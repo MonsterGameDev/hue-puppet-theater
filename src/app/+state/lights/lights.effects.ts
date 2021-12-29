@@ -20,7 +20,7 @@ export class LightEffects {
             let lights: Light[] = [];
             Object.keys(response).forEach((key) => {
               lights?.push({
-                id: parseInt(key,10),
+                id: key,
                 ...response[key],
               });
             });

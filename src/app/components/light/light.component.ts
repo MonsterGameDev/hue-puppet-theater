@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { vmLight } from 'src/app/models/ui-interfaces';
+import { Light } from 'src/app/+state/state.interfaces';
 import { ConverterService } from 'src/app/services/converter.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ConverterService } from 'src/app/services/converter.service';
   styleUrls: ['./light.component.scss'],
 })
 export class LightComponent implements OnInit {
-  @Input() light?: vmLight;
+  @Input() light?: Light;
   bgColor: any;
 
   constructor(private converterService: ConverterService) {}
