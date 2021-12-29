@@ -1,0 +1,10 @@
+<div class="groups-container">
+  <header class="header-secondary">
+    <h2>Phillips Hue Groups</h2>
+  </header>
+  <div>Number of groups: {{ groups?.length }}</div>
+
+  <div class="group-container" *ngFor="let group of groups">
+    <app-group [group]="group"></app-group>
+  </div>
+</div>

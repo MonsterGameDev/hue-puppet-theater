@@ -7,9 +7,19 @@
 
 body {
   height: 95vh;
-  margin: 20px 10px 5px 20px;
+  padding: 2rem 1rem 0.5rem 2rem;
   font-size: 10px;
   font-family: Tahoma;
+
+  position: relative;
+  width: 80%;
+  margin: auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-
+.header-secondary {
+  font-size: 1.8 rem;
+  color: rgba(34, 34, 34, 0.851);
+  display: flex;
+  justify-content: space-around;
+}

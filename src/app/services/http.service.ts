@@ -15,20 +15,15 @@ export class HttpService {
   constructor(private httpClient: HttpClient) { }
 
 
-  // getAllLights(): Observable<any> {
-  //   this.httpClient.get<any>('https://')
-  // }
-
-
-
-
   getAllLights(): Observable<any> {
-    return this.httpClient.get<any>(`${this.baseUrl}/lights`).pipe(
-      retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError)
-    )
+    return this.httpClient.get<any>(`${this.baseUrl}/lights`);
   }
 
+  getAllGroups(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/groups`);
+  }
+
+  
 
   // Error handling
   private handleError(error: HttpErrorResponse) {

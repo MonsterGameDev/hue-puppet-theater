@@ -13,6 +13,12 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { groupsReducer } from './+state/groups/groups.reducer';
+import { lightsReducer } from './+state/lights/lights.reducer';
+import { LightEffects } from './+state/lights/lights.effects';
+import { GroupEffects } from './+state/groups/groups.effects';
+import { GroupComponent } from './components/group/group.component';
+import { GroupsComponent } from './components/groups/groups.component';
 
 @NgModule({
   declarations: [
@@ -22,17 +28,21 @@ import { EffectsModule } from '@ngrx/effects';
     LightComponent,
     LightsComponent,
     OverviewComponent,
-
+    GroupComponent,
+    GroupsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([])
+    StoreModule.forRoot({ lights: lightsReducer, groups: groupsReducer }, {}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([LightEffects, GroupEffects]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

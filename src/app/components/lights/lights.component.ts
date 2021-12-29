@@ -1,10 +1,10 @@
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Light } from 'src/app/models/interfaces';
+import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { groupsLoadAction } from 'src/app/+state/groups/groups.actions';
+import { AppState, Light } from 'src/app/+state/state.interfaces';
 import { vmLight } from 'src/app/models/ui-interfaces';
 import { HttpService } from 'src/app/services/http.service';
+import * as lightActions from './../../+state/lights/lights.actions';
 
 @Component({
   selector: 'app-lights',
@@ -12,20 +12,18 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./lights.component.scss'],
 })
 export class LightsComponent implements OnInit {
-  vmlights?: vmLight[];
+  @Input() lights?: Light[];
 
-  constructor(private httpService: HttpService) {}
+
+  constructor(
+    private httpService: HttpService,
+    private store: Store<AppState>
+  ) {}
 
   ngOnInit(): void {
-    this.vmlights = [];
-    this.httpService.getAllLights().subscribe((data: any) => {
-      Object.keys(data).forEach((key) => {
-        this.vmlights?.push({
-          id: key,
-          ...data[key],
-        });
-      });
-      console.log(this.vmlights);
-    });
+
+
+    
+
   }
 }
