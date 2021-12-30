@@ -127,3 +127,21 @@ export interface Action {
   on: boolean;
   alert: string;
 }
+
+export interface GroupStateRequestBody {
+  on?: boolean;
+  bri?: number;
+  hue?: number;
+  sat?: number;
+  xy?: any;
+  ct?: number;
+  transitionTime?: number;
+  bri_inc?: number;
+  hue_inc?: number;
+  sat_inc?: number;
+  xy_inc: any;
+  ct_inc:number;
+  scene: string;
+
+
+}

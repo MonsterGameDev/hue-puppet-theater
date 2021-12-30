@@ -17,13 +17,10 @@ export class GroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.lightIds = this.group?.lights;
-    console.log('lightIds: ', this.lightIds);
-
     this.store.select(selectAllLights).subscribe((lights: Light[]) => {
       this.lights = lights.filter((light: Light) => {
         return this.lightIds?.includes(light.id);
       });
-      console.log('Lights. ', this.lights);
     });
   }
 }
