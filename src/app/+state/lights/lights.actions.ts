@@ -12,3 +12,7 @@ export const lightsLoadErrorAction = createAction(
   props<{ error: HttpErrorResponse }>()
 );
 
+export const lightSelectedAction = createAction(
+  '[LIGHT] - Set selected LightId',
+  props<{ body: string }>()
+);

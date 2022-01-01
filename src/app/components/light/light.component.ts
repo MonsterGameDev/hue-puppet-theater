@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Light } from 'src/app/+state/state.interfaces';
+import { Store } from '@ngrx/store';
+import { Light, Lights } from 'src/app/+state/state.interfaces';
 import { ConverterService } from 'src/app/services/converter.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LightComponent implements OnInit {
   @Input() light?: Light;
   bgColor: any;
 
-  constructor(private converterService: ConverterService) {}
+  constructor(private converterService: ConverterService, private store: Store<Lights>) {}
 
   ngOnInit(): void {
     const x = this.light?.state?.xy[0];
@@ -20,5 +21,12 @@ export class LightComponent implements OnInit {
     const rgbObj = this.converterService.xyBriToRgb(x, y, bri);
 
     this.bgColor = `rgb(${rgbObj.r},${rgbObj.g},${rgbObj.b})`;
+  }
+
+  clickHandler(e: any) {
+    e.stopPropagation();
+    console.log('light clicked', this.light?.state);
+
+
   }
 }

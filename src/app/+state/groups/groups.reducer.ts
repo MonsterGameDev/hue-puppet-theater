@@ -53,5 +53,13 @@ export const groupsReducer = createReducer(
       loading: false,
       error: action.error,
     },
-  }))
+  })),
+  on(groupsAction.groupSelectedAction, (state, action) => ({
+    ...state,
+    selectedGroupId: action.body
+  })),
+  on(groupsAction.clearGroupSelectedAction, (state) => ({
+    ...state,
+    selectedGroupId: undefined
+  })),
 );

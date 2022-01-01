@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { groupSelectedAction } from 'src/app/+state/groups/groups.actions';
+import { getSelectedGroupAction } from 'src/app/+state/groups/groups.selectors';
 import { selectAllLights } from 'src/app/+state/lights/lights.selectors';
-import { AppState, Group, Light } from 'src/app/+state/state.interfaces';
+import { Action, AppState, Group, Light } from 'src/app/+state/state.interfaces';
 
 @Component({
   selector: 'app-group',
@@ -10,8 +12,10 @@ import { AppState, Group, Light } from 'src/app/+state/state.interfaces';
 })
 export class GroupComponent implements OnInit {
   @Input() group?: Group;
+  @Output() actionEmitter?= new EventEmitter<Action>();
   lightIds?: string[];
   lights?: Light[];
+  action?: Action;
 
   constructor(private store: Store<AppState>) {}
 
@@ -22,5 +26,11 @@ export class GroupComponent implements OnInit {
         return this.lightIds?.includes(light.id);
       });
     });
+  }
+
+  groupClickHandler(e: any) {
+    e.stopPropagation();
+    if (this.group?.id)
+      this.store.dispatch(groupSelectedAction({ body: this.group?.id}))
   }
 }

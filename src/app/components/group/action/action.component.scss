@@ -1,0 +1,14 @@
+.action-container {
+  width: 50%;
+  .action-item {
+    display: flex;
+    justify-content: space-between;
+
+    .label {
+      font-weight: 600;
+    }
+    .value {
+      font-style: italic;
+    }
+  }
+}

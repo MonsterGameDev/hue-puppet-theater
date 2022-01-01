@@ -1,6 +1,9 @@
 <div class="home-container">
   <section class="group-actions">
-    <button class="btn btn-cta" (click)="loadGroups()">Loadgroups</button>
+    <div id="selectedGroupAction" *ngIf="action">
+      <app-action [action]="action"></app-action>
+    </div>
+    <button class="btn btn--green" (click)="loadGroups()">Loadgroups</button>
   </section>
   <section class="group-panel">
     <app-groups></app-groups>

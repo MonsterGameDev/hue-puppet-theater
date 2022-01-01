@@ -1,4 +1,4 @@
-<div class="group-container">
+<div class="group-container" (click)="groupClickHandler($event)">
   <h3>{{ group?.name }}</h3>
   <div class="lights-list">
     <app-lights [lights]="lights"></app-lights>

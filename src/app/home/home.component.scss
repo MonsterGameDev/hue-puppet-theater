@@ -10,4 +10,10 @@
   border: 1px solid black;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 1rem;
+
+  position: releative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }

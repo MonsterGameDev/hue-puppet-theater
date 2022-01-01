@@ -19,6 +19,7 @@ import { LightEffects } from './+state/lights/lights.effects';
 import { GroupEffects } from './+state/groups/groups.effects';
 import { GroupComponent } from './components/group/group.component';
 import { GroupsComponent } from './components/groups/groups.component';
+import { ActionComponent } from './components/group/action/action.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { GroupsComponent } from './components/groups/groups.component';
     OverviewComponent,
     GroupComponent,
     GroupsComponent,
+    ActionComponent,
   ],
   imports: [
     BrowserModule,

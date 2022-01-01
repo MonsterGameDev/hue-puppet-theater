@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export interface AppState {
   lights: Lights;
-  groups: any;
+  groups: Groups;
 }
 
 export interface Behaviors {
@@ -14,6 +14,7 @@ export interface Behaviors {
 export interface Lights {
   lights: Light[];
   behaviors: Behaviors;
+  selectedLightId?: string;
 }
 
 export interface Light {
@@ -93,6 +94,7 @@ export interface Startup {
 export interface Groups {
   groups: Group[];
   behaviors: Behaviors;
+  selectedGroupId?: string;
 }
 
 export interface Group {
@@ -124,13 +126,20 @@ export interface Stream {
 export interface Locations {}
 
 export interface Action {
-  on: boolean;
-  alert: string;
+  alert?: string;
+  on?: boolean;
+  bri?: number;
+  hue?: number;
+  sat?: number;
+  effect?: string;
+  xy?: number[];
+  ct?: number;
+  colormode?: any;
 }
 
 export interface GroupStateUpdateRequest {
-  id: string,
-  state: GroupStateUpdateBody
+  id: string;
+  state: GroupStateUpdateBody;
 }
 
 export interface GroupStateUpdateBody {

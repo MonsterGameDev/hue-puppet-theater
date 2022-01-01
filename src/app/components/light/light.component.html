@@ -2,6 +2,7 @@
   class="bulp"
   [title]="light?.name"
   [ngStyle]="{ 'background-color': bgColor }"
+  (click)="clickHandler($event)"
 >
   {{ light?.id }}
 </div>
