@@ -32,4 +32,23 @@ export class GroupEffects {
       })
     );
   });
+
+  updateGroupState$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(groupActions.groupUpdateAction),
+      switchMap((action) => {
+        return this.httpService.setGroupState(action.body.id, action.body.state).pipe(
+          map(response => {
+            this.httpService.log(response);
+            return groupActions.groupsLoadAction();
+          }),
+          catchError((error) => {
+            return of(groupActions.groupsLoadErrorAction({error}))
+          }),
+        );
+      })
+    )
+  });
+
+
 }

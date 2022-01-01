@@ -128,7 +128,12 @@ export interface Action {
   alert: string;
 }
 
-export interface GroupStateRequestBody {
+export interface GroupStateUpdateRequest {
+  id: string,
+  state: GroupStateUpdateBody
+}
+
+export interface GroupStateUpdateBody {
   on?: boolean;
   bri?: number;
   hue?: number;
@@ -139,9 +144,14 @@ export interface GroupStateRequestBody {
   bri_inc?: number;
   hue_inc?: number;
   sat_inc?: number;
-  xy_inc: any;
-  ct_inc:number;
-  scene: string;
+  xy_inc?: any;
+  ct_inc?: number;
+  scene?: string;
+}
 
-
+export interface GroupStateResponse {
+  success: {
+    address?: string;
+    value: string;
+  };
 }

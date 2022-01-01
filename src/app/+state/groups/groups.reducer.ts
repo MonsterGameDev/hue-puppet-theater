@@ -1,5 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { Groups } from '../state.interfaces';
+import {
+  AppState,
+  Group,
+  Groups,
+  GroupState,
+  GroupStateUpdateRequest,
+} from '../state.interfaces';
 import * as groupsAction from './groups.actions';
 
 export const initialState: Groups = {
@@ -28,6 +34,20 @@ export const groupsReducer = createReducer(
     },
   })),
   on(groupsAction.groupsLoadErrorAction, (state, action) => ({
+    ...state,
+    behaviors: {
+      loading: false,
+      error: action.error,
+    },
+  })),
+  on(groupsAction.groupUpdateAction, (state: Groups) => ({
+    ...state,
+    behaviors: {
+      loading: false,
+      error: null,
+    },
+  })),
+  on(groupsAction.groupUpdateErrorAction, (state, action) => ({
     ...state,
     behaviors: {
       loading: false,
