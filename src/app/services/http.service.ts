@@ -5,7 +5,6 @@ import { retry, catchError, map } from 'rxjs/operators';
 import {
   GroupStateResponse,
   GroupStateUpdateBody,
-  GroupStateUpdateRequest,
 } from '../+state/state.interfaces';
 
 @Injectable({
