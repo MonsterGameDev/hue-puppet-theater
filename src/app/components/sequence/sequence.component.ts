@@ -16,10 +16,23 @@ export class SequenceComponent implements OnInit {
   ngOnInit(): void {}
 
   editSequenceItem(name: string) {
-    this.store.dispatch(setSelectedSequenceItem({ payload: name }));  
+    this.store.dispatch(setSelectedSequenceItem({ payload: name }));
   }
 
-  deleteSequenceItem(name: string) {}
+  deleteSequenceItem(name: string) {
+    console.log('Delete SequenceItem');
+
+  }
+
+  addGroup() {
+    console.log('Add Group Clicked');
+
+  }
+
+  addBulp() {
+    console.log('Add Bulp Clicked');
+
+  }
 
   //  createSequenceItem() {}
 }

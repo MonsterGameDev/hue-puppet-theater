@@ -2,6 +2,7 @@
 <div *ngIf="!lightFlow?.length">
   No items yet, create a new sequence-item by clicking the button below
 </div>
+
 <div class="sequence-item-list" *ngFor="let item of lightFlow">
   <div class="sequence-header">
     <strong>{{
@@ -13,11 +14,20 @@
       ({{ item.groupActionArray.length }} Groups)
     </span>
     <span class="cta-icons">
-      <fa-icon icon="edit" (click)="editSequenceItem(item.sequenceName)"></fa-icon>
-      <fa-icon icon="trash"  (click)="deleteSequenceItem(item.sequenceName)"></fa-icon>
-      <!-- <fa-icon icon="plus"  (click)="createSequenceItem(item.sequenceName)"></fa-icon> -->
+      <fa-icon
+        icon="edit"
+        (click)="editSequenceItem(item.sequenceName)"
+      ></fa-icon>
+      <fa-icon
+        icon="trash"
+        (click)="deleteSequenceItem(item.sequenceName)"
+      ></fa-icon>
     </span>
   </div>
+  <nav class="cta-sequence-tools">
+  <span (click)="addGroup()">Add Group</span>
+  <span (click)="addBulp()">Add Bulp</span>
+  </nav>
   <div class="sequence-item-action-list">
     <div *ngIf="lightFlow?.length">
       <div *ngFor="let groupAction of item.groupActionArray"></div>
