@@ -1,0 +1,15 @@
+<h3>LightFlow / SequenceItems</h3>
+<div class="sequence-item-list" *ngFor="let item of lightFlow">
+  <h4>{{ item.sequenceName }}</h4>
+  <div>
+    <strong>{{
+      item.startTime.hh + ":" + item.startTime.mm + ":" + item.startTime.ss
+    }}</strong>
+  </div>
+  <div class="sequence-item-action-list">
+    <div *ngIf="lightFlow?.length">
+      <div *ngFor="let groupAction of item.groupActionArray"></div>
+    </div>
+    <div *ngIf="!lightFlow?.length">No items yet</div>
+  </div>
+</div>

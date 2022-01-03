@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
 import {
-  GroupStateResponse,
-  GroupStateUpdateBody,
+  GroupActionUpdateResponse,
+  GroupActionUpdateRequest,
 } from '../+state/state.interfaces';
 
 @Injectable({
@@ -28,8 +28,8 @@ export class HttpService {
 
   setGroupState(
     id: string,
-    body: GroupStateUpdateBody
-  ): Observable<GroupStateResponse[] | HttpErrorResponse> {
+    body: GroupActionUpdateRequest
+  ): Observable<GroupActionUpdateResponse[] | HttpErrorResponse> {
     const url = `${this.baseUrl}/groups/${id}/action`;
     return this.httpClient.put<any>(url, body).pipe(
       map((response) => response),

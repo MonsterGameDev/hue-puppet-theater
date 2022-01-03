@@ -1,8 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { SequenceItem } from './sequence/sequence.interface';
 
 export interface AppState {
   lights: Lights;
   groups: Groups;
+  sequence: SequenceItem[];
 }
 
 export interface Behaviors {
@@ -137,12 +139,12 @@ export interface Action {
   colormode?: any;
 }
 
-export interface GroupStateUpdateRequest {
+export interface GroupActionUpdate {
   id: string;
-  state: GroupStateUpdateBody;
+  body: GroupActionUpdateRequest;
 }
 
-export interface GroupStateUpdateBody {
+export interface GroupActionUpdateRequest {
   on?: boolean;
   bri?: number;
   hue?: number;
@@ -158,7 +160,7 @@ export interface GroupStateUpdateBody {
   scene?: string;
 }
 
-export interface GroupStateResponse {
+export interface GroupActionUpdateResponse {
   success: {
     address?: string;
     value: string;

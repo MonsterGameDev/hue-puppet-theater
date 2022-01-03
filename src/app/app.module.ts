@@ -20,6 +20,9 @@ import { GroupEffects } from './+state/groups/groups.effects';
 import { GroupComponent } from './components/group/group.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { ActionComponent } from './components/group/action/action.component';
+import { sequenceReducer } from './+state/sequence/sequence.reducer';
+import { FormsModule } from '@angular/forms';
+import { SequenceComponent } from './components/sequence/sequence.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +35,21 @@ import { ActionComponent } from './components/group/action/action.component';
     GroupComponent,
     GroupsComponent,
     ActionComponent,
+    SequenceComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({ lights: lightsReducer, groups: groupsReducer }, {}),
+    FormsModule,
+    StoreModule.forRoot(
+      {
+        lights: lightsReducer,
+        groups: groupsReducer,
+        sequence: sequenceReducer,
+      },
+      {}
+    ),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

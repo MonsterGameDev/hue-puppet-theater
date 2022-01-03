@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
-import { Group, GroupStateUpdateRequest } from '../state.interfaces';
+import { Group, GroupActionUpdate } from '../state.interfaces';
 
 export const groupsLoadAction = createAction('[GROUPS] - load');
 export const groupsLoadSuccessAction = createAction(
@@ -14,7 +14,7 @@ export const groupsLoadErrorAction = createAction(
 
 export const groupUpdateAction = createAction(
   '[GROUPS] - update group put',
-  props<{ body: GroupStateUpdateRequest }>()
+  props<{ body: GroupActionUpdate }>()
 );
 export const groupUpdateErrorAction = createAction(
   '[GROUPS] - update group-state put error',

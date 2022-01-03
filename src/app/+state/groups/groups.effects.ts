@@ -38,7 +38,7 @@ export class GroupEffects {
       ofType(groupActions.groupUpdateAction),
       switchMap((action) => {
         return this.httpService
-          .setGroupState(action.body.id, action.body.state)
+          .setGroupState(action.body.id, action.body.body)
           .pipe(
             map((response) => {
               this.httpService.log(response);
@@ -51,4 +51,4 @@ export class GroupEffects {
       })
     ); // pipe
   });
-} // class end
+} // class

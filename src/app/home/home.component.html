@@ -1,11 +1,56 @@
 <div class="home-container">
   <section class="group-actions">
-    <div id="selectedGroupAction" *ngIf="action">
-      <app-action [action]="action"></app-action>
+    <div class="sequence-container">
+      <div *ngIf="!lightFlow">Ingen sequence fundet</div>
+      <app-sequence [lightFlow]="lightFlow" *ngIf="lightFlow"></app-sequence>
     </div>
-    <button class="btn btn--green" (click)="loadGroups()">Loadgroups</button>
+
+    <div class="cta-buttons">
+      <button class="btn btn--green" (click)="loadGroups()">Loadgroups</button>
+      <button class="btn btn--green" (click)="createSequence()">
+        Create Sequence
+      </button>
+    </div>
+    <!-- <div id="selectedGroupAction" *ngIf="group">
+      <app-action [group]="group"></app-action>
+      <button class="button" (click)="saveAction()">Save to flow</button>
+    </div> -->
   </section>
+
   <section class="group-panel">
     <app-groups></app-groups>
   </section>
+</div>
+
+<div class="popUp" *ngIf="showCreateSequenceForm">
+  <fieldset>
+    <label for="name">Sequence Name</label>
+    <input type="text" [(ngModel)]="sequenceName" />
+  </fieldset>
+  <fieldset>
+    <label for="name">Sequence StartTime:</label>
+    <input
+      type="text"
+      [(ngModel)]="stampHour"
+      size="4"
+      maxlength="2"
+      minlength="2"
+      placeholder="hh"
+    />:<input
+      type="text"
+      [(ngModel)]="stampMinute"
+      size="4"
+      maxlength="2"
+      minlength="2"
+      placeholder="mm"
+    />:<input
+      type="text"
+      [(ngModel)]="stampSecond"
+      size="4"
+      maxlength="2"
+      minlength="2"
+      placeholder="ss"
+    />
+  </fieldset>
+  <button (click)="saveNewSequenceItem()">Save</button>
 </div>

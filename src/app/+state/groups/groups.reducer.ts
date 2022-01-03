@@ -1,11 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import {
-  AppState,
-  Group,
-  Groups,
-  GroupState,
-  GroupStateUpdateRequest,
-} from '../state.interfaces';
+import { Groups } from '../state.interfaces';
 import * as groupsAction from './groups.actions';
 
 export const initialState: Groups = {
@@ -56,10 +50,10 @@ export const groupsReducer = createReducer(
   })),
   on(groupsAction.groupSelectedAction, (state, action) => ({
     ...state,
-    selectedGroupId: action.body
+    selectedGroupId: action.body,
   })),
   on(groupsAction.clearGroupSelectedAction, (state) => ({
     ...state,
-    selectedGroupId: undefined
-  })),
+    selectedGroupId: undefined,
+  }))
 );
