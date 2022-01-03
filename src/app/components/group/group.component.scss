@@ -1,0 +1,31 @@
+.group-container {
+  border: 1px solid black;
+  border-radius: 1rem;
+  // padding: 0.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+
+  .card-header {
+    padding: 0.5rem;
+    background-color: lightgray;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-content {
+    
+  }
+}

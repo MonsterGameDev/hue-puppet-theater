@@ -4,7 +4,7 @@ import { SequenceItem } from './sequence/sequence.interface';
 export interface AppState {
   lights: Lights;
   groups: Groups;
-  sequence: SequenceItem[];
+  sequences: Sequences;
 }
 
 export interface Behaviors {
@@ -112,12 +112,10 @@ export interface Group {
   locations: Locations;
   action: Action;
 }
-
 export interface GroupState {
   all_on: boolean;
   any_on: boolean;
 }
-
 export interface Stream {
   proxymode: string;
   proxynode: string;
@@ -165,4 +163,11 @@ export interface GroupActionUpdateResponse {
     address?: string;
     value: string;
   };
+}
+
+// Sequences
+
+export interface Sequences {
+  selectedSequence?: string;
+  sequences: SequenceItem[];
 }

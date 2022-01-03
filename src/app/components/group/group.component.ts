@@ -3,7 +3,12 @@ import { Store } from '@ngrx/store';
 import { groupSelectedAction } from 'src/app/+state/groups/groups.actions';
 import { getSelectedGroupAction } from 'src/app/+state/groups/groups.selectors';
 import { selectAllLights } from 'src/app/+state/lights/lights.selectors';
-import { Action, AppState, Group, Light } from 'src/app/+state/state.interfaces';
+import {
+  Action,
+  AppState,
+  Group,
+  Light,
+} from 'src/app/+state/state.interfaces';
 
 @Component({
   selector: 'app-group',
@@ -12,10 +17,12 @@ import { Action, AppState, Group, Light } from 'src/app/+state/state.interfaces'
 })
 export class GroupComponent implements OnInit {
   @Input() group?: Group;
-  @Output() actionEmitter?= new EventEmitter<Action>();
+  @Output() actionEmitter? = new EventEmitter<Action>();
   lightIds?: string[];
   lights?: Light[];
   action?: Action;
+
+  groupSelected: boolean = false;
 
   constructor(private store: Store<AppState>) {}
 
@@ -31,6 +38,6 @@ export class GroupComponent implements OnInit {
   groupClickHandler(e: any) {
     e.stopPropagation();
     if (this.group?.id)
-      this.store.dispatch(groupSelectedAction({ body: this.group?.id}))
+      this.store.dispatch(groupSelectedAction({ body: this.group?.id }));
   }
 }

@@ -23,6 +23,11 @@ import { ActionComponent } from './components/group/action/action.component';
 import { sequenceReducer } from './+state/sequence/sequence.reducer';
 import { FormsModule } from '@angular/forms';
 import { SequenceComponent } from './components/sequence/sequence.component';
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -42,11 +47,12 @@ import { SequenceComponent } from './components/sequence/sequence.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+
     StoreModule.forRoot(
       {
         lights: lightsReducer,
         groups: groupsReducer,
-        sequence: sequenceReducer,
+        sequences: sequenceReducer,
       },
       {}
     ),
@@ -55,8 +61,13 @@ import { SequenceComponent } from './components/sequence/sequence.component';
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([LightEffects, GroupEffects]),
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faEdit, faTrash, faPlus);
+  }
+}

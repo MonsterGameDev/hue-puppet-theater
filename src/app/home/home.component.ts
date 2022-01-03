@@ -78,6 +78,7 @@ export class HomeComponent implements OnInit {
   }
 
   saveNewSequenceItem() {
+
     let payload: SequenceItem = {
       sequenceName: this.sequenceName,
       startTime: {

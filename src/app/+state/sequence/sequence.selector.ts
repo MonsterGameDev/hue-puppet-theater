@@ -1,14 +1,18 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { AppState } from '../state.interfaces';
-import { SequenceItem } from './sequence.interface';
+import { createSelector } from '@ngrx/store';
+import { AppState, Sequences } from '../state.interfaces';
 
-export const selectSequenceSlice = (state: AppState) => state.sequence;
+export const selectSequenceSlice = (state: AppState) => state.sequences;
 
 export const selectSequence = createSelector(
   selectSequenceSlice,
-  (state: SequenceItem[]) => {
+  (state: Sequences) => {
     console.log('state');
 
-    return state;
+    return state.sequences;
   }
+);
+
+export const getSelectedSequence = createSelector(
+  selectSequenceSlice,
+  (state: Sequences) => state.selectedSequence
 );

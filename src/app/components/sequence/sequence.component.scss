@@ -1,0 +1,15 @@
+.sequence-item-list {
+  margin-top: 0.5rem;
+  .sequence-header {
+    h4 {
+      display: inline-block;
+    }
+    .number-of-items {
+      margin-left: 0.2rem;
+    }
+  }
+  fa-icon {
+    margin: 0 0.2rem;
+    cursor: pointer;
+  }
+}

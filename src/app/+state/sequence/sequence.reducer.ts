@@ -1,25 +1,47 @@
 import { createReducer, on } from '@ngrx/store';
-import { SequenceItem } from './sequence.interface';
 import * as sequenceActions from './sequence.actions';
+import { Sequences } from '../state.interfaces';
+import { state } from '@angular/animations';
 
-const initialSequence: SequenceItem[] = [];
+const initialSequences: Sequences = {
+  selectedSequence: undefined,
+  sequences: [],
+};
 
 export const sequenceReducer = createReducer(
-  initialSequence,
-  on(sequenceActions.initializeSequenceAction, (state) => []),
-  on(sequenceActions.addSequenceItemAction, (state: SequenceItem[], action) => {
-    return [...state, action.payload];
+  initialSequences,
+  on(sequenceActions.initializeSequenceAction, (state) => initialSequences),
+  on(sequenceActions.addSequenceItemAction, (state: Sequences, action) => {
+    return {
+      ...state,
+      sequences: [...state.sequences, action.payload],
+    };
   }),
+  on(sequenceActions.setSelectedSequenceItem, (state: Sequences, action) => ({
+    ...state,
+    selectedSequence: action.payload,
+  })),
   on(
     sequenceActions.addGroupActionToActionArray,
-    (state: SequenceItem[], action) => {
-      const arrIndex: number = state.findIndex(
-        (sequenceItem: SequenceItem) =>
-          sequenceItem.sequenceName === action.payload.sequenceName
-      );
-      console.log(`state: ${state}, action: ${action}, index: ${arrIndex}`);
-
-      return [...state];
+    (state: Sequences, action) => {
+      return {
+        ...state,
+        sequences: state.sequences
+          .map((sequenceItem) => ({ ...sequenceItem }))
+          .map((sequenceItem) => {
+            if (sequenceItem.sequenceName === action.payload.sequenceName) {
+              return {
+                ...sequenceItem,
+                groupActionArray: [
+                  ...sequenceItem.groupActionArray,
+                  action.payload.groupActionUpdate,
+                ],
+              };
+            } else {
+              return sequenceItem;
+            }
+          }),
+      };
     }
   )
 );

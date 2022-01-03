@@ -9,6 +9,11 @@ export const addSequenceItemAction = createAction(
   props<{ payload: SequenceItem }>()
 );
 
+export const setSelectedSequenceItem = createAction(
+  '[SEQUENCE] - Set selected sequenceItem',
+  props<{ payload: string }>()
+);
+
 export const addGroupActionToActionArray = createAction(
   '[SEQUENCE] - add GroupAction to SequenceItem',
   props<{
