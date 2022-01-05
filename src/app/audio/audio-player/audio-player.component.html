@@ -1,0 +1,23 @@
+<h2>Audio Player</h2>
+<audio controls>
+  <source src="assets/new-try.mp3" />
+</audio>
+<div class="time-stamp">
+  <span class="hours">{{ hrs }}:</span>
+  <span class="minutes">{{ min }}:</span>
+  <span class="seconds">{{ sec }}</span>
+</div>
+<button class="btn btn-green" (click)="setTimeStamp()">{{ btnText }}</button>
+
+<div class="createSequenceForm" *ngIf="showForm">
+  <h4>Create Sequence</h4>
+  <div class="label">Set Timestamp at:</div>
+  <div class="time-stamp">
+    <span class="hours">{{ hrs }}:</span>
+    <span class="minutes">{{ min }}:</span>
+    <span class="seconds">{{ sec }}</span>
+  </div>
+  <div class="label">SequenceName</div>
+  <input type="text" [(ngModel)]="sequenceName" />
+  <button class="btn btn-green" (click)="createSequence()">Create</button>
+</div>

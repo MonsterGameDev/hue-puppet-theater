@@ -28,6 +28,7 @@ import {
   FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
 import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { AudioPlayerComponent } from './audio/audio-player/audio-player.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
     GroupsComponent,
     ActionComponent,
     SequenceComponent,
+    AudioPlayerComponent,
   ],
   imports: [
     BrowserModule,
