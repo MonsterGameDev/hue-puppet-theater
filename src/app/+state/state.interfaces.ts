@@ -96,7 +96,7 @@ export interface Startup {
 export interface Groups {
   groups: Group[];
   behaviors: Behaviors;
-  selectedGroupId?: string;
+  selectedGroup?: Group;
 }
 
 export interface Group {
@@ -156,6 +156,8 @@ export interface GroupActionUpdateRequest {
   xy_inc?: any;
   ct_inc?: number;
   scene?: string;
+  effect?: string;
+  alert?: string;
 }
 
 export interface GroupActionUpdateResponse {

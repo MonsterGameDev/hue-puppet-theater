@@ -23,3 +23,8 @@ export const addGroupActionToActionArray = createAction(
     };
   }>()
 );
+
+export const removeGroupActionFromActionArray = createAction('[SEQUENCE] - removing groupAction', props<{payload: {
+  selectedSequence: string,
+  groupId: string
+}}>())

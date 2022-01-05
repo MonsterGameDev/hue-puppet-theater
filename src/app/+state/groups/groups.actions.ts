@@ -23,7 +23,7 @@ export const groupUpdateErrorAction = createAction(
 
 export const groupSelectedAction = createAction(
   '[GROUPS] - Set selected GroupId',
-  props<{ body: string }>()
+  props<{ payload: Group }>()
 );
 
 export const clearGroupSelectedAction = createAction(

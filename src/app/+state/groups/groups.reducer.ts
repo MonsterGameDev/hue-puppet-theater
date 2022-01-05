@@ -50,10 +50,10 @@ export const groupsReducer = createReducer(
   })),
   on(groupsAction.groupSelectedAction, (state, action) => ({
     ...state,
-    selectedGroupId: action.body,
+    selectedGroup: action.payload,
   })),
   on(groupsAction.clearGroupSelectedAction, (state) => ({
     ...state,
-    selectedGroupId: undefined,
+    selectedGroup: undefined,
   }))
 );
