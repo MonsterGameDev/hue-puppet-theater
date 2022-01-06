@@ -75,4 +75,8 @@ export class AudioPlayerComponent implements OnInit {
     this.sequenceName = '';
     this.showForm = false;
   }
+
+  startFlow() {
+    
+  }
 }
