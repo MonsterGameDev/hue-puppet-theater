@@ -3,16 +3,22 @@ import { AppState, Sequences } from '../state.interfaces';
 
 export const selectSequenceSlice = (state: AppState) => state.sequences;
 
-export const selectSequence = createSelector(
+export const getAllSequences = createSelector(
   selectSequenceSlice,
   (state: Sequences) => {
-    console.log('state');
-
     return state.sequences;
   }
 );
 
-export const getSelectedSequence = createSelector(
+export const getSelectedSequenceName = createSelector(
   selectSequenceSlice,
   (state: Sequences) => state.selectedSequence
 );
+
+export const getSelectedSequence = createSelector (
+  selectSequenceSlice,
+  getSelectedSequenceName,
+  (slice, sequenceName) => {
+    return slice.sequences.find((sequence) => sequence.sequenceName === sequenceName)
+  }
+)

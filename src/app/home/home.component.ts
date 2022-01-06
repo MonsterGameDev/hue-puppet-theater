@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { groupsLoadAction } from '../+state/groups/groups.actions';
-import {
-  getSelectedGroup,
-  getSelectedGroupAction,
-} from '../+state/groups/groups.selectors';
+import { getSelectedGroup } from '../+state/groups/groups.selectors';
 import { lightsLoadAction } from '../+state/lights/lights.actions';
 import { addSequenceItemAction } from '../+state/sequence/sequence.actions';
 import { SequenceItem, TimeStamp } from '../+state/sequence/sequence.interface';
-import { selectSequence } from '../+state/sequence/sequence.selector';
+import { getAllSequences } from '../+state/sequence/sequence.selector';
 import {
   Action,
   AppState,
@@ -41,7 +38,7 @@ export class HomeComponent implements OnInit {
     this.store.select(getSelectedGroup).subscribe((data?: Group) => {
       this.group = data;
     });
-    this.store.select(selectSequence).subscribe((data: SequenceItem[]) => {
+    this.store.select(getAllSequences).subscribe((data: SequenceItem[]) => {
       console.log(data);
 
       this.lightFlow = data;
@@ -50,6 +47,7 @@ export class HomeComponent implements OnInit {
 
   loadGroups(): void {
     this.store.dispatch(groupsLoadAction());
+    this.store.dispatch(lightsLoadAction());
   }
 
   saveAction(): void {
@@ -78,7 +76,6 @@ export class HomeComponent implements OnInit {
   }
 
   saveNewSequenceItem() {
-
     let payload: SequenceItem = {
       sequenceName: this.sequenceName,
       startTime: {
