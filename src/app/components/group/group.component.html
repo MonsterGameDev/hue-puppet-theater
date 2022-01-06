@@ -1,9 +1,14 @@
-<div class="group-container" (click)="groupClickHandler($event)">
+<div class="group-container">
   <div class="card-header">
     <h3>{{ group?.name }}</h3>
 
     <label class="switch">
-      <input type="checkbox" [checked]="groupSelected" />
+      <input
+        type="checkbox"
+        [ngModel]="isChecked"
+        (change)="groupSelectedStateChanged($event)"
+        [disabled]="!selectedSequenceName"
+      />
       <span class="slider round"></span>
     </label>
   </div>
