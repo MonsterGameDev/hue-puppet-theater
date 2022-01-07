@@ -29,6 +29,8 @@ import {
 } from '@fortawesome/angular-fontawesome';
 import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { AudioPlayerComponent } from './audio/audio-player/audio-player.component';
+import { scenesReducer } from './+state/scenes/scenes.reducer';
+import { ScenesEffects } from './+state/scenes/scene.effects';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { AudioPlayerComponent } from './audio/audio-player/audio-player.componen
         lights: lightsReducer,
         groups: groupsReducer,
         sequences: sequenceReducer,
+        scenes: scenesReducer,
       },
       {}
     ),
@@ -62,7 +65,7 @@ import { AudioPlayerComponent } from './audio/audio-player/audio-player.componen
       maxAge: 25,
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([LightEffects, GroupEffects]),
+    EffectsModule.forRoot([LightEffects, GroupEffects, ScenesEffects]),
     FontAwesomeModule,
   ],
   providers: [],

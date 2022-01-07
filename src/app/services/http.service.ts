@@ -26,6 +26,10 @@ export class HttpService {
     return this.httpClient.get<any>(`${this.baseUrl}/groups`);
   }
 
+  getAllScenes(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/scenes`);
+  }
+
   setGroupState(
     id: string,
     body: GroupActionUpdateRequest

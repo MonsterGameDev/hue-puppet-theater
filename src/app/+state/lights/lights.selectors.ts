@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { AppState, Light, Lights } from '../state.interfaces';
+import { AppState, Lights } from '../state.interfaces';
 
 export const selectLights = (state: AppState) => state.lights;
 

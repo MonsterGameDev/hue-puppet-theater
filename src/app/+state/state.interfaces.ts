@@ -1,15 +1,24 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { Scene } from './scenes/scenes.interfaces';
 import { SequenceItem } from './sequence/sequence.interface';
 
 export interface AppState {
   lights: Lights;
   groups: Groups;
   sequences: Sequences;
+  scenes: Scenes;
 }
 
 export interface Behaviors {
   loading: boolean;
   error: HttpErrorResponse | null;
+}
+
+// Scenes Interfaces
+export interface Scenes {
+  scenes: Scene[],
+  behavior: Behaviors,
+  selectedLightId?: string
 }
 
 // Lights Interfaces
@@ -158,6 +167,7 @@ export interface GroupActionUpdateRequest {
   scene?: string;
   effect?: string;
   alert?: string;
+  colormode?: string;
 }
 
 export interface GroupActionUpdateResponse {
